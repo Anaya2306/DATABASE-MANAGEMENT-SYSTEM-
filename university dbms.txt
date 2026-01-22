@@ -1,0 +1,23 @@
+1.create a table st_info with attributes prn,name, m1,m2,m3
+create table st_info(prn int, name varchar2(20), m1 number, m2 number, m3 number);
+2.insert atleast 10 records.
+3. add attribute total and perc to the table.
+ 
+
+insert into st_info values  (111,'mkf',1,2,34);
+insert into st_info values  (112,'mke',1,2,34);
+insert into st_info values  (113,'mkg',1,2,34);
+insert into st_info values  (114,'mkh',1,2,34);
+insert into st_info values  (115,'mki',1,2,34);
+insert into st_info values  (116,'mkj',1,2,34);
+insert into st_info values  (117,'mkk',1,2,34);
+insert into st_info values  (118,'mkl',1,2,34);
+insert into st_info values  (119,'mkz',1,2,34);
+insert into st_info values  (120,'mkx',1,2,34);
+
+alter table st_info add total int;
+alter table st_info add perc number;
+update st_info set total = m1+m2+m3;
+perc= total/3;
+
+
