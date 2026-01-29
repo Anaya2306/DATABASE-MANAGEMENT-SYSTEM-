@@ -1,0 +1,48 @@
+create table emp (emp_id int, name2(20), mobile int);
+insert into emp(emp_id ,int primary key, name  varchar2(20) , mobile int);
+INSERT INTO emp (emp_id, name, mobile) VALUES (1, 'Xyz_Aaron', 9876543210);
+INSERT INTO emp (emp_id, name, mobile) VALUES (2, 'Xyz_Brian', 9876543211);
+INSERT INTO emp (emp_id, name, mobile) VALUES (3, 'Xyz_Chris', 9876543212);
+INSERT INTO emp (emp_id, name, mobile) VALUES (4, 'Xyz_David', 9876543213);
+INSERT INTO emp (emp_id, name, mobile) VALUES (5, 'Xyz_Ethan', 9876543214);
+INSERT INTO emp (emp_id, name, mobile) VALUES (6, 'Xyz_Frank', 9876543215);
+INSERT INTO emp (emp_id, name, mobile) VALUES (7, 'Xyz_George', 9876543216);
+INSERT INTO emp (emp_id, name, mobile) VALUES (8, 'Xyz_Henry', 9876543217);
+INSERT INTO emp (emp_id, name, mobile) VALUES (9, 'Xyz_Ian', 9876543218);
+INSERT INTO emp (emp_id, name, mobile) VALUES (10, 'Xyz_Jack', 9876543219);
+INSERT INTO emp (emp_id, name, mobile) VALUES (11, 'Xyz_Kevin', 9876543220);
+INSERT INTO emp (emp_id, name, mobile) VALUES (12, 'Xyz_Liam', 9876543221);
+
+create sequence emp_seq start with 1/1;
+
+
+create sequence emp_seq start with 1 increment by 1;
+
+Sequence created.
+
+SQL> create table map(emp_id ,int primary key, name  varchar2(20) , mobile int);
+create table map(emp_id ,int primary key, name  varchar2(20) , mobile int)
+                 *
+ERROR at line 1:
+ORA-02263: need to specify the datatype for this column
+
+
+SQL> create table map(emp_id int primary key, name  varchar2(20) , mobile int);
+
+Table created.
+
+SQL> insert into emp(emp_id int primary key, name varchar2(20), mobile int) values (11, 'Xyz_Liam', 9876543221);
+insert into emp_info(emp_id int primary key, name varchar2(20), mobile int) values (11, 'Xyz_Liam', 9876543221) 
+insert into emp_info(emp_id ,int primary key, name  varchar2(20) , mobile int);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (1, 'Xyz_Aaron', 9876543210,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (2, 'Xyz_Brian', 9876543211,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (3, 'Xyz_Chris', 9876543212,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (4, 'Xyz_David', 9876543213,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (5, 'Xyz_Ethan', 9876543214,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (6, 'Xyz_Frank', 9876543215,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (7, 'Xyz_George', 9876543216,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (8, 'Xyz_Henry', 9876543217,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (9, 'Xyz_Ian', 9876543218,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (10, 'Xyz_Jack', 9876543219,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (11, 'Xyz_Kevin', 9876543220,440011);
+INSERT INTO emp_info(emp_id, name, mobile) VALUES (12, 'Xyz_Liam', 9876543221,440011);
