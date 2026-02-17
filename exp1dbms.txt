@@ -21,3 +21,4 @@ update st_info set total = m1+m2+m3;
 perc= total/3;
 
 
+
