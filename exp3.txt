@@ -1,0 +1,76 @@
+ex 3
+
+
+select * from instructor where dept_id=(select dept_id from department where name='Computer Science');
+
+to calculate avareage salary of instructors from comp sci:
+
+
+select avg(salary) as avg_salary from instructor where dept_id=(select dept_id from department where name='Computer Science');
+
+
+Using joins
+
+select avg(I.) as avg_salary from instructor I jionnent D on i.dept_d=d.debt_id where d.name='Computer Science';
+
+
+select avg(I.salary) as avg_salary from instructor I join department D on i.dept_d=d.debt_id where d.name='Computer Science';
+
+select d.name as d_name, avg(i.salary) from department d join instructor I on d.dept_id = i.dept_id group by d.name; 
+
+select count(distinct i.name) as total_name_per_dept from instructor i join department d on i.dept_id=d.dept_id group by d.name;
+
+select i.name, d.name, i.salary from instructor i where i.salary) > any (slelct i2.salary from instructor i2 join department d on i.dept_id = d.dept_id where lower(d.name) = 'biology');
+
+
+alter table add heirachical date
+ALTER TABLE Instructor ADD COLUMN HireDate DATE;
+
+update instructor set hiredate = date '2019-01-15' where instructor_id = '1';
+update instructor set hiredate = date '2019-02-15' where instructor_id = '2';
+update instructor set hiredate = date '2019-03-15' where instructor_id = '3';
+update instructor set hiredate = date '2019-04-15' where instructor_id = '4';
+update instructor set hiredate = date '2019-05-15' where instructor_id = '5';
+update instructor set hiredate = date '2019-06-15' where instructor_id = '6';
+update instructor set hiredate = date '2019-07-15' where instructor_id = '7';
+update instructor set hiredate = date '2019-08-15' where instructor_id = '8';
+
+select * from instructor where hiredate < add_months(sysdate,-60);
+select * from instructor where  hiredate> '2019-04-15' and hiredate <date '2019-06-15';
+select * from instructor where hire date < date '2024-01-01' and hiredate < add_month(sysdate,-62);
+
+update instructor set salary='75000' where instructor_id='1';
+update instructor set salary='87000' where instructor_id='2';
+
+update instructor set salary='98000' where instructor_id='3';
+
+update instructor set salary='68000' where instructor_id='4';
+
+update instructor set salary='65000' where instructor_id='5';
+
+update instructor set salary='100000' where instructor_id='6';
+update instructor set salary='92000' where instructor_id='7';
+
+
+update instructor set salary='45000' where instructor_id='4';
+
+update instructor set salary='54000' where instructor_id='5';
+select i.name|| '=>' || d.name from instructor i join department d where i.dept_id = d.dept_id;
+
+
+select count(i.name) from instructor i join department d on i.dept_id=d.dept_id;
+
+select d.name,count(i.name) from instructor i join department d on i.dept_id=d.dept_id group by d.name;
+
+select count(i.name) from instructor i join department d on i.dept_id=d.dept_id group by d.name;
+
+select name,dept_id, salary from instructor;
+
+update instructor set salary = 70000 where name = 'Frank Miller';
+
+select i.name, i.salary from instructor i where i.salary>=(select  i2.salary from instructor i2 join department d on i2.dept_id = d.dept_id where d.name = 'Biology');
+
+
+
+
+
