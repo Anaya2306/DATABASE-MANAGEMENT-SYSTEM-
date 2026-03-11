@@ -1,0 +1,97 @@
+practical 8
+there are marks of 4 subjects
+condition for each sub is 50 marks
+also check for dictinction if total above 75 , first division if total above 60,second division if total above 50
+
+FOR CASE 1
+
+CREATE OR REPLACE PROCEDURE Sub_Avg(
+    cs INT := 75,
+    m1 INT:= 45,
+    m2 INT := 52,
+    m3 INT :=75
+)
+AS
+    total INT;
+    per NUMBER(5,2);
+BEGIN
+    total := cs + m1 + m2 + m3;
+    per := (total/400)*100;
+
+    IF cs<50 OR m1<50 OR m2<50 OR m3<50 THEN
+        DBMS_OUTPUT.PUT_LINE('FAIL');
+    ELSE
+        IF per>=75 THEN
+            DBMS_OUTPUT.PUT_LINE('DISTINCTION');
+        ELSIF per>=60 THEN
+            DBMS_OUTPUT.PUT_LINE('FIRST division');
+        ELSIF per>=50 THEN
+            DBMS_OUTPUT.PUT_LINE('second division');
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('GRADE D');
+        END IF;
+
+        DBMS_OUTPUT.PUT_LINE('PERCENTAGE = ' || per);
+    END IF;
+END;
+/
+BEGIN
+    Sub_Avg(75,45,52,75);
+END;
+/
+
+
+
+
+IF CS = 75, M1 = 45, M2=52, M3 = 75
+
+
+
+FOR CASE 1
+
+BEGIN
+    Sub_Avg(75,45,52,75);
+END;
+/
+
+
+-----------------------------------------------------------------------------FOR CASE 2
+CREATE OR REPLACE PROCEDURE Sub_Avg(
+    cs INT := 75,
+    m1 INT:= 79,
+    m2 INT := 100,
+    m3 INT :=95
+)
+AS
+    total INT;
+    per NUMBER(5,2);
+BEGIN
+    total := cs + m1 + m2 + m3;
+    per := (total/400)*100;
+
+    IF cs>50 OR m1>50 OR m2>50 OR m3>50 THEN
+        DBMS_OUTPUT.PUT_LINE('PASS');
+    
+        IF per>=75 THEN
+            DBMS_OUTPUT.PUT_LINE('DISTINCTION');
+        ELSIF per>=60 THEN
+            DBMS_OUTPUT.PUT_LINE('FIRST division');
+        ELSIF per>=50 THEN
+            DBMS_OUTPUT.PUT_LINE('second division');
+       END IF;
+
+
+            DBMS_OUTPUT.PUT_LINE('total = '|| total);
+        
+
+        DBMS_OUTPUT.PUT_LINE('PERCENTAGE = ' || per);
+    END IF;
+END;
+/
+BEGIN
+    Sub_Avg(75,79,100,95);
+END;
+/
+
+
+
