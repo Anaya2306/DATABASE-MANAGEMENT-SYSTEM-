@@ -1,0 +1,165 @@
+exp6 part2
+Create or replace procedure add1
+as
+a number;
+b number;
+begin
+a:=5;
+b:=10;
+ DBMS_output.put_line('Result:'|| (a+b));
+End;
+/
+--->Procedure created.
+
+SQL> set serveroutput on
+SQL> execute add1;
+--->Result:15
+    PL/SQL procedure successfully completed.
+
+Create or replace procedure add2
+(a  In number,
+b  In number)
+as
+begin
+ DBMS_output.put_line('Result:'|| (a+b)); #result-message (a+b) is computation
+End;
+/
+----->Procedure created.
+
+SQL> execute add2(5,10);
+-->Result:15
+   PL/SQL procedure successfully completed.
+
+
+Create or replace procedure add3
+(a  In number,
+b  In number, c out number)
+as
+begin
+ c:=a+b;
+ DBMS_output.put_line('Result:'|| c);
+End;
+/
+Procedure created.
+
+SQL> variable c1 number; #output of c is redirected in c1
+SQL> execute add3(5,10,:c1)
+Result:15
+PL/SQL procedure successfully completed.
+
+
+QUESTION---->SWAP 2 NUMBERS WITHOUT  USING 3RD VARIABLE
+A=5 , B=10
+A=10, B=5
+
+CREATE OR REPLACE PROCEDURE SWAP1
+(a in out number, 
+b in out number)
+as
+begin
+ a:=a+b;
+ b:=a-b;
+ a:=a-b;
+ DBMS_output.put_line('After Swapping : a = ' || a ||' b = ' || b );
+End;
+/
+Procedure created.
+
+#Call the Stored Procedure
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 20;
+BEGIN
+    Swap1(a, b); # can write print line here to after this
+END;
+/
+
+SQL> DECLARE
+  2      a NUMBER := 10;
+  3      b NUMBER := 20;
+  4  BEGIN
+  5      Swap1(a, b);
+  6  END;
+  7  /
+After Swapping : a = 20b = 10
+PL/SQL procedure successfully completed.
+
+ABOVE EXECUTION USING DECLARE DIRECTLY ON PROMPT
+
+SQL> variable a number;
+SQL> exec :a:=5;
+
+PL/SQL procedure successfully completed.
+
+SQL> variable b number;
+SQL> exec :b:=10;
+
+PL/SQL procedure successfully completed.
+
+SQL> exec swap1(:a,:b)
+After Swapping : a = 10b = 5
+
+PL/SQL procedure successfully completed.
+-----------------------------------------------------
+
+METHOD 1-LARGEST OF THREE NUMBERS redirect to prompt
+
+create or replace procedure lar
+(a in out number, 
+b in out number,
+c in out number)
+as
+begin
+  if a>b and a>c then
+	DBMS_output.put_line('Largest number is' || a);
+  elsif b>a and b>c then
+        DBMS_output.put_line('Largest number is' || b);
+  else
+	DBMS_output.put_line('Largest number is' || c);
+End if;
+end;
+/
+Procedure created.
+
+SQL> variable a number;
+SQL> exec :a:=10;
+PL/SQL procedure successfully completed.
+
+SQL> variable b number;
+SQL> exec :b:=20;
+PL/SQL procedure successfully completed.
+
+SQL> variable c number;
+SQL> exec :c:=30;
+PL/SQL procedure successfully completed.
+
+SQL> exec lar(:a,:b,:c);
+Largest number is30
+PL/SQL procedure successfully completed.
+
+-----------------------------------------------------------
+METHOD 2 - NO REDIRECT FORMAT
+
+create or replace procedure lar
+(n1 in number, 
+n2 in  number,
+n3 in number)
+as
+  a number:=n1;
+  b number:=n2;
+  c number:=n3;
+begin
+  if a>b and a>c then
+	DBMS_output.put_line('Largest number is' || a);
+  elsif b>a and b>c then
+        DBMS_output.put_line('Largest number is' || b);
+  else
+	DBMS_output.put_line('Largest number is' || c);
+End if;
+end;
+/
+Procedure created.
+
+SQL> exec lar(10,20,30);
+Largest number is30
+PL/SQL procedure successfully completed.

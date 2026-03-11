@@ -1,0 +1,124 @@
+exp6 part1
+#hello world program using procedures
+SQL> set serveroutput ON;
+SQL> create procedure Hello
+  2  AS
+  3  Begin
+  4     DBMS_OUTPUT.PUT_Line('Hello World');
+  5  End;
+  6  /
+
+Procedure created.
+
+
+#NOW TO EXECUTE ABOVE PROGRAM
+SQL> EXEC Hello
+Hello World
+
+PL/SQL procedure successfully completed.
+
+SQL> execute Hello;
+Hello World
+
+PL/SQL procedure successfully completed.
+
+
+NOTE: WE CANT CREATE A  Hello PROCEDURE TWICE IF MODIFY CONTENT OF IT
+create or replace procedure Hello 
+  AS
+  Begin
+         DBMS_OUTPUT.PUT_Line('Hello to SIT');
+  End;
+  /
+
+#ADDITION OF TWO NUMBERS
+create or replace procedure addition (                      
+	num1 number:=5,
+	num2 number:=10
+)
+as
+   begin
+     DBMS_OUTPUT.PUT_LINE('RESULT: ' || num1+num2);
+   END;
+  /
+
+Procedure created.
+
+
+                                                   Experiment No. 6
+1. Swapping Two Numbers Without Using a Third Variable Procedure Creation:
+
+#Create the Stored Procedure
+CREATE OR REPLACE PROCEDURE SwapNumbers(
+ num1 IN OUT NUMBER,
+ num2 IN OUT NUMBER
+)AS
+BEGIN
+  num1:=num1+num2;
+  num2:=num1-num2;
+  num1:=num1-num2;
+END;
+/
+
+Procedure created.
+
+#Call the Stored Procedure
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 20;
+BEGIN
+    SwapNumbers(a, b);
+    DBMS_OUTPUT.PUT_LINE('After Swap: a = ' || a || ', b = ' || b);
+END;
+/
+
+After Swap: a = 20, b = 10
+PL/SQL procedure successfully completed.
+
+#Call the procedure directly in SQLPlus or a similar tool:
+
+EXEC SwapNumbers(10, 20); ---->MYSQL
+
+FOR ORACLE
+variable x number
+variable y number
+
+exec :x :=10; --->PL/SQL procedure successfully completed.
+exec :y:=20;  ---PL/SQL procedure successfully completed.
+
+EXEC SwapNumbers(:x,:y); -->PL/SQL procedure successfully completed.
+
+print x
+         X
+----------
+        20
+print y
+         Y
+----------
+        10
+
+
+2.Finding the Largest Amongst Three Numbers Procedure Creation:
+
+CREATE OR REPLACE PROCEDURE FindLargest (
+    num1 IN NUMBER,
+    num2 IN NUMBER,
+    num3 IN NUMBER,
+    largest OUT NUMBER
+) AS
+BEGIN
+    IF num1 >= num2 AND num1 >= num3 THEN
+        largest := num1;
+    ELSIF num2 >= num1 AND num2 >= num3 THEN
+        largest := num2;
+    ELSE
+        largest := num3;
+    END IF;
+END;
+/
+
+Procedure created.
+
+
+
+
