@@ -1,0 +1,145 @@
+                                               Experiment No. 7
+
+Aim: To study Control loops in PL/SQL
+
+i.Sum of first 10 numbers using while loop.
+
+create or replace procedure wloop as
+i number;
+sum1 number;
+begin 
+  i:=1;
+  sum1:=0;
+  while i<=10 loop
+   sum1:=sum1+i;
+   i:=i+1;
+ end loop; 
+ DBMS_output.put_line('Sum of first 10 numbers:' || sum1);
+end;
+/
+
+Procedure created.
+
+SQL> set serveroutput on
+SQL> exec wloop
+
+Sum of first 10 numbers:55
+PL/SQL procedure successfully completed.
+----------------------------------------------------------------------
+ii. Sum when i=10 , condition i!=0 and sum till i=50 (sum from 10 to 49)
+
+create or replace procedure wloop2 as
+i number;
+sum1 number;
+begin 
+  i:=10;
+  sum1:=0;
+  while i!=0 loop
+   sum1:=sum1+i;
+   i:=i+1;
+   exit when i=50;
+ end loop; 
+ DBMS_output.put_line('Sum of first numbers:' || sum1);
+end;
+
+/
+
+Procedure created.
+SQL> exec wloop2
+
+Sum of first 10 numbers:1180
+PL/SQL procedure successfully completed.
+
+-----------------------------------------------------------------------
+
+iii. above code take input of till i = from user take value
+
+create or replace procedure wloop3 
+(i1 in number)
+as
+  i number:=10;
+  sum1 number:=0;
+begin 
+  while i<>0 loop
+   sum1:=sum1+i;
+   i:=i+1;
+   exit when i=i1;
+ end loop; 
+ DBMS_output.put_line('Sum of numbers:' || sum1);
+end;
+/
+
+Procedure created.
+
+SQL> exec wloop3(50)
+
+Sum of numbers:1180
+PL/SQL procedure successfully completed.
+
+
+NOTE :- CAN TAKE CONDITION AS I!=0 TOO IN WHILE
+
+-----------------------------------------------------------------
+
+iv. FIBBONACCI SERIES
+
+create or replace procedure wloop4 
+(i1 in number)
+as
+ i number:=i1;
+ a number:=0;
+ b number:=1;
+ c number;
+begin
+  DBMS_OUTPUT.PUT_LINE('Fibbonacci Series: ' || a || '  '|| b);
+  i:=i-2;
+  while i>0 loop
+    c:=a+b;
+    DBMS_OUTPUT.PUT_LINE(c);
+    a:=b;
+    b:=c;
+    i:=i-1;
+  end loop;
+end;
+/
+
+Procedure created.
+
+SQL> exec wloop4(3)
+
+Fibbonacci Series: 0  1
+1
+PL/SQL procedure successfully completed.
+
+SQL> exec wloop4(4)
+
+Fibbonacci Series: 0  1
+1
+2
+PL/SQL procedure successfully completed.
+
+SQL> exec wloop4(15)
+
+Fibbonacci Series: 0  1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+PL/SQL procedure successfully completed.
+
+------------------------------------------------------------------------------------
+
+
+    
+
+
+
