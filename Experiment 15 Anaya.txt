@@ -1,0 +1,74 @@
+exp15
+
+
+create or replace procedure to_day
+as 
+	v_day varchar2(10);
+begin
+	v := to_char(sysdate, 'dy');
+	dbms_output.put__line("the current month is '|| v_day);
+end;
+/
+ 
+create or replace procedure 
+as 
+	v_day varchar2(10);
+begin
+--------------------------------------
+what is the minimum salary in the company which will be multiplied by 10
+
+CREATE TABLE emp23 (
+    emp_no INTEGER,
+    name VARCHAR(100),
+    category INTEGER,
+    salary INTEGER
+);
+
+insert into emp23 values (1, 'john', 10, 20450);
+insert into emp23 values (2, 'alice', 20, 56780);
+insert into emp23 values (3, 'bob', 30, 45670);
+insert into emp23 values (4, 'david',33, 66570);
+insert into emp23 values (5, 'emma',23, 752680);
+
+Create or Replace procedure max_min_Salary
+As
+Vmax emp23.salary%Type,
+Vmin emp23.salary%Type,
+V_upper emp23.salary%Type,
+V_lower emp23.salary%Type
+
+Begin
+Vmax := select max(salary) for emp23;
+Vmin := select min(salary) for emp23;
+V_upper := Vmin * 10;
+V_lower := Vmax/10;
+End;
+/
+ 
+create or replace trigger emp_ri
+before insert or update on emp23
+COMPOUND TRIGGER
+declare
+Vmax emp23.salary%Type;
+Vmin emp23.salary%Type;
+V_upper emp23.salary%Type;
+V_lower emp23.salary%Type;
+BEFORE STATEMENT IS
+begin
+select max(salary) into V_max from emp23;
+select min(salary) into V_min from emp23;
+
+V_upper := V_min * 10;
+V_lower := V_max / 10;
+END BEFORE STATEMENT:
+
+BEFORE EACH ROW IS
+BEGIN
+if :NEW.salary > V_upper or :NEW.salary < V_lower Then
+RAISE_APPLICATION_ERROR(-20001, 'Salary should be between lower and upper range');
+END if;
+END BEFORE EACH ROW;
+END;
+/
+
+insert into emp23(

@@ -1,0 +1,53 @@
+exp 14
+CREATE TABLE emp2 (
+    emp_no INTEGER,
+    name VARCHAR(100),
+    category INTEGER,
+    salary INTEGER
+);
+
+insert into emp2 values (1, 'john', 10, 20450);
+insert into emp2 values (2, 'alice', 20, 56780);
+insert into emp2 values (3, 'bob', 30, 45670);
+insert into emp2 values (4, 'david',33, 66570);
+insert into emp2 values (5, 'emma', 23,752680);
+
+create or replace trigger trg_uppercase_name
+before insert or update on emp2
+FOR EACH ROW
+begin
+    :NEW.name := UPPER(:NEW.name);
+end;
+/
+
+insert into emp2 Vupdate emp2 set name = 'alice' where emp_no = 1;
+
+exp 14
+CREATE TABLE emp21 (
+    emp_no INTEGER,
+    name VARCHAR(100),
+    category INTEGER
+    salary NUMBER(8,2);
+);
+
+update 
+
+
+
+create or replace trigger tri_int
+before insert or update on emp21
+for each row
+begin
+if( salary > 10000)
+dbms_output.put_line("category 1")
+else(salary >20000)
+dbms_output.put_line("category 2")
+elseif(salary >30000)
+dbms_output.put_line("category 3")
+end;
+/
+
+ 
+
+
+

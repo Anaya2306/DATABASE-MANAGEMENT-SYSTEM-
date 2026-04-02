@@ -1,0 +1,26 @@
+practical 13 
+Trioggers
+create or replace trigger tri_up
+before || after for 
+Insert or update or delete on sit_info
+begin
+statements
+end;
+/
+create or replace trigger triename
+after update on st_info
+
+begin
+	DBMS_OUTPUT.PUT_LINE('This system level triggred is fired' );
+end;
+/
+
+update 2
+create or relace trigger tri_validmarks
+ before insert on st_info fro each row
+begin
+    if sub1>0 or sub2<0 or sub2>100 or sub3>100 sub4>0 or sub4>100
+    dbms_output then 
+dbms_output.put_line(' Enter valid marks for all subjects in range between 0 to 100');
+end;
+/
